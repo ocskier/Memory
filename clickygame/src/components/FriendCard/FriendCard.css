@@ -1,0 +1,38 @@
+.card {
+  max-height: 200px;
+  border-radius: 2px;
+  position: relative;
+  width: 175px;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}
+
+.card > .img-container > img {
+  width: 60%
+}
+
+.card > .content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 15px;
+}
+
+.card > .content > ul {
+  list-style-type: none;
+}
+
+.card > .content > ul > li {
+  margin-top: 18px;
+}
+
+.card > .remove {
+  color: #ff1744;
+  font-size: 48px;
+  position: absolute;
+  right: 0;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.card > .remove:hover {
+  color: #d50000;
+}
