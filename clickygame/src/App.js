@@ -9,7 +9,7 @@ import Title from "./components/Title";
 import friends from "./friends.json";
 import "./App.css";
 
-const still = "/question-mark-1872665_1280.jpg"
+const still = "./question-mark-1872665_1280.jpg"
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
