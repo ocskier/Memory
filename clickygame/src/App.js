@@ -16,6 +16,7 @@ class App extends Component {
   state = {
     friends: friends,
     score: 0,
+    guesses: 0,
     chosen: []
   };
 
@@ -30,16 +31,62 @@ class App extends Component {
     console.log(e);
     e.preventDefault();
     const origFriends = this.duplicFriends(friends); 
-    this.setState({friends: this.shuffleArray(origFriends)},() => console.log(this.state.friends));
+    this.setState({friends: this.shuffleArray(origFriends), score: 0, guesses: 0,chosen: []},() => console.log(this.state.friends));
   }
 
   cardClickHandler = (e,id) => {
     e.preventDefault();
-    const copyFriends = this.state.friends;
-    const friendIndex = copyFriends.findIndex(friend => friend.id===id);
-    const status = copyFriends[friendIndex].userSelected;
-    status ? copyFriends[friendIndex].userSelected = false : copyFriends[friendIndex].userSelected = true;
-    this.setState({friends: copyFriends,chosen: this.state.chosen.concat(id)},() => console.log(this.state)); 
+    const friendIndex = this.state.friends.findIndex(friend => friend.id===id);
+    const pickName = this.state.friends[friendIndex].name;
+    console.log(friendIndex);
+    this.setState({
+      friends: this.state.friends.map((friend) => {
+        if (friend.id === id) {
+        friend = {...friend, userSelected : true}
+        }
+        return friend
+      }),
+      guesses: this.state.guesses + 1,
+      chosen: this.state.chosen.concat({id:id,name:pickName})
+    },() => {
+      console.log(this.state);
+      this.handleGuesses();
+    });
+  }
+
+  handleGuesses = () => {
+    if (this.state.guesses === 2 && (this.state.chosen[0].name === this.state.chosen[1].name)) {
+      setTimeout(() => {this.setState({
+        friends: this.removeMatch(),
+        score: this.state.score + 1,
+        guesses: 0,
+        chosen: []
+      },
+        () => this.resetImgs
+    )},3000); 
+    } else if (this.state.guesses === 2 && !(this.state.chosen[0].name === this.state.chosen[1].name)) {
+      console.log("Loaded");  
+      this.setState({
+          guesses: 0,
+          chosen: []
+        }, () => setTimeout(this.resetImgs,3000)
+      )
+    }
+  }
+
+  removeMatch = () => {
+    const remainingFriends = this.state.friends.filter(friend => friend.id !== this.state.chosen[0].id)
+    .filter(friend => friend.id !== this.state.chosen[1].id);
+    return remainingFriends
+  }
+
+  resetImgs = () => {
+     this.setState({
+      friends: this.state.friends.map((friend) => {
+        friend = {...friend, userSelected:false}
+        return friend
+      })
+      },()=> console.log(this.state));
   }
 
   shuffleArray = (friends) => {
