@@ -2,7 +2,7 @@ import React from "react";
 import "./FriendCard.css";
 
 const FriendCard = props => (
-  <div className="card small">
+  <div className={props.hidden ? "card small hidden" : "card small"}>
     <div className="card-image" style={{maxHeight: "80%"}}>
       <img style={{width: "100%", backgroundSize: "cover",backgroundPosition: "50%",backgroundClip: "content-box"}} alt={props.name} src={props.image} />
     </div>
@@ -19,7 +19,7 @@ const FriendCard = props => (
         </li> */}
       </ul>
     </div>
-    <button onClick={(e) => props.cardClickHandler(e,props.id)} className={props.disabled ? "disabled btn-small remove" : "btn-small remove"}>
+    <button onClick={(e) => props.cardClickHandler(e,props.id)} className={props.disabled || props.hidden ? "disabled btn-small remove" : "btn-small remove"}>
       𝘅
     </button>
   </div>

@@ -2,8 +2,8 @@
   max-height: 140px;
   border-radius: 2px;
   position: relative;
-  width: 125px;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  width:16.6%
 }
 
 .card > .img-container > img {
@@ -40,3 +40,7 @@
 .disabled {
   display: none
 }
+
+/* .hidden {
+  display: none
+} */

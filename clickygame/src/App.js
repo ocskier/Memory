@@ -16,8 +16,9 @@ class App extends Component {
   state = {
     friends: friends,
     score: 0,
+    wrong: 0,
     guesses: 0,
-    chosen: []
+    chosen: [],
   };
 
   componentDidMount = () => {
@@ -31,7 +32,7 @@ class App extends Component {
     console.log(e);
     e.preventDefault();
     const origFriends = this.duplicFriends(friends); 
-    this.setState({friends: this.shuffleArray(origFriends), score: 0, guesses: 0,chosen: []},() => console.log(this.state.friends));
+    this.setState({friends: this.shuffleArray(origFriends), score: 0, wrong: 0, guesses: 0,chosen: []},() => console.log(this.state.friends));
   }
 
   cardClickHandler = (e,id) => {
@@ -56,17 +57,19 @@ class App extends Component {
 
   handleGuesses = () => {
     if (this.state.guesses === 2 && (this.state.chosen[0].name === this.state.chosen[1].name)) {
-      setTimeout(() => {this.setState({
+      setTimeout(() => {
+        this.setState({
         friends: this.removeMatch(),
         score: this.state.score + 1,
         guesses: 0,
         chosen: []
-      },
-        () => this.resetImgs
-    )},3000); 
+        },
+        () => {console.log(this.state);this.resetImgs();}
+      )},3000); 
     } else if (this.state.guesses === 2 && !(this.state.chosen[0].name === this.state.chosen[1].name)) {
       console.log("Loaded");  
       this.setState({
+          wrong: this.state.wrong + 1, 
           guesses: 0,
           chosen: []
         }, () => setTimeout(this.resetImgs,3000)
@@ -75,8 +78,14 @@ class App extends Component {
   }
 
   removeMatch = () => {
-    const remainingFriends = this.state.friends.filter(friend => friend.id !== this.state.chosen[0].id)
-    .filter(friend => friend.id !== this.state.chosen[1].id);
+    // const remainingFriends = this.state.friends.filter(friend => friend.id !== this.state.chosen[0].id)
+    // .filter(friend => friend.id !== this.state.chosen[1].id);
+      const remainingFriends = this.state.friends.map((friend) => {
+        if ((friend.id === this.state.chosen[0].id) || (friend.id === this.state.chosen[1].id)) {
+          friend = {...friend, matched:true}
+        }
+        return friend
+      });
     return remainingFriends
   }
 
@@ -119,7 +128,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Jumbotron score={this.state.score} startOver={this.startOver}>Clicky Game
+        <Jumbotron score={this.state.score} wrong={this.state.wrong} startOver={this.startOver}>Clicky Game
         </Jumbotron>
         <Wrapper>
           <Title>Pick a Card!</Title>
@@ -132,6 +141,7 @@ class App extends Component {
               disabled={friend.userSelected}
               name={friend.name}
               image={friend.image}
+              hidden={friend.matched}
             /> :
             <StillCard
               cardClickHandler={this.cardClickHandler}
@@ -139,6 +149,7 @@ class App extends Component {
               key={friend.id}
               name={friend.name}
               image={still}
+              hidden={friend.matched}
             />
           ))}
         </Wrapper>

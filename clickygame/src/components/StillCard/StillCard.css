@@ -2,7 +2,7 @@
   max-height: 200px;
   border-radius: 2px;
   position: relative;
-  width: 175px;
+  width:16.6%;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
 }
 
@@ -22,3 +22,7 @@
 .card > .remove:hover {
   color: #d50000;
 }
+
+/* .hidden {
+  display: none
+} */
