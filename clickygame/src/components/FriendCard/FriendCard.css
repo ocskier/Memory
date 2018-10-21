@@ -1,16 +1,18 @@
 .card {
+  overflow: hidden;
   max-height: 140px;
   border-radius: 2px;
   position: relative;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
-  width:16.6%
+  width:16%;
+  margin: 0 5px;
 }
 
 .card > .img-container > img {
   width: 60%
 }
 
-.card > .content {
+/* .card > .content {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 15px;
@@ -22,7 +24,7 @@
 
 .card > .content > ul > li {
   margin-top: 18px;
-}
+} */
 
 .card > .remove {
   color: #ff1744;
@@ -41,6 +43,9 @@
   display: none
 }
 
-/* .hidden {
-  display: none
-} */
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 30%;   
+  }
+}

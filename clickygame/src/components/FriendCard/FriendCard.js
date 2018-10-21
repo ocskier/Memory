@@ -2,26 +2,11 @@ import React from "react";
 import "./FriendCard.css";
 
 const FriendCard = props => (
-  <div className={props.hidden ? "card small hidden" : "card small"}>
-    <div className="card-image" style={{maxHeight: "80%"}}>
-      <img style={{width: "100%", backgroundSize: "cover",backgroundPosition: "50%",backgroundClip: "content-box"}} alt={props.name} src={props.image} />
+  <div className="card small">
+    <div className="card-image" style={{maxHeight: "100%"}}>
+      <img style={{width: "100%",maxHeight: "280px",paddingTop: "40px",backgroundSize: "cover",backgroundPosition: "50%",backgroundClip: "content-box"}} alt={props.name} src={props.image} />
+      <span className="card-title black-text" style={{top: 0,padding: "12px",width: "100%",textAlign: "center",fontSize:"1rem"}}>{props.name}</span>
     </div>
-    <div className="card-content" style={{maxHeight: "40%"}}>
-      <ul style={{textAlign:"center"}}>
-        <li>
-          <strong>{props.name}</strong>
-        </li>
-        {/* <li>
-          <strong>Occupation:</strong> {props.occupation}
-        </li>
-        <li>
-          <strong>Location:</strong> {props.location}
-        </li> */}
-      </ul>
-    </div>
-    <button onClick={(e) => props.cardClickHandler(e,props.id)} className={props.disabled || props.hidden ? "disabled btn-small remove" : "btn-small remove"}>
-      𝘅
-    </button>
   </div>
 );
 

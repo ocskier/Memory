@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {Modal} from 'react-materialize'
+
 
 import Jumbotron from "./components/Header";
 import Footer from "./components/Footer"
@@ -9,6 +11,8 @@ import Title from "./components/Title";
 import friends from "./friends.json";
 import "./App.css";
 
+
+declare var $ : any;
 const still = "./question-mark-1872665_1280.jpg"
 
 class App extends Component {
@@ -18,14 +22,17 @@ class App extends Component {
     score: 0,
     wrong: 0,
     guesses: 0,
+    matchedText: "You have a Match!",
     chosen: [],
+    allDisabled: false
   };
 
   componentDidMount = () => {
+
     const friendsX2 = this.duplicFriends(friends);
     this.setState({
       friends: this.shuffleArray(friendsX2)
-    }, () => console.log(this.state.friends));
+    });
   }
 
   startOver = (e) => {
@@ -57,23 +64,26 @@ class App extends Component {
 
   handleGuesses = () => {
     if (this.state.guesses === 2 && (this.state.chosen[0].name === this.state.chosen[1].name)) {
-      setTimeout(() => {
         this.setState({
-        friends: this.removeMatch(),
-        score: this.state.score + 1,
-        guesses: 0,
-        chosen: []
-        },
-        () => {console.log(this.state);this.resetImgs();}
-      )},3000); 
-    } else if (this.state.guesses === 2 && !(this.state.chosen[0].name === this.state.chosen[1].name)) {
-      console.log("Loaded");  
-      this.setState({
+          friends: this.removeMatch(),
+          score: this.state.score + 1,
+          guesses: 0
+          },
+          () => this.setState({ chosen: [] },() => {
+            this.resetImgs();
+            $('#modal1').modal('open');
+          })
+          )
+    } 
+    else if (this.state.guesses === 2 && !(this.state.chosen[0].name === this.state.chosen[1].name)) {
+        console.log("Loaded");  
+        this.setState({
           wrong: this.state.wrong + 1, 
           guesses: 0,
-          chosen: []
-        }, () => setTimeout(this.resetImgs,3000)
-      )
+          chosen: [],
+          allDisabled: true
+        }, () => {setTimeout(this.resetImgs,3000)}
+        )
     }
   }
 
@@ -94,7 +104,8 @@ class App extends Component {
       friends: this.state.friends.map((friend) => {
         friend = {...friend, userSelected:false}
         return friend
-      })
+        }),
+      allDisabled: false
       },()=> console.log(this.state));
   }
 
@@ -131,17 +142,15 @@ class App extends Component {
         <Jumbotron score={this.state.score} wrong={this.state.wrong} startOver={this.startOver}>Clicky Game
         </Jumbotron>
         <Wrapper>
-          <Title>Pick a Card!</Title>
+          <Title>Try for a Match!</Title>
           {this.state.friends.map(friend => (
             friend.userSelected ? 
             <FriendCard
               cardClickHandler={this.cardClickHandler}
               id={friend.id}
               key={friend.id}
-              disabled={friend.userSelected}
               name={friend.name}
               image={friend.image}
-              hidden={friend.matched}
             /> :
             <StillCard
               cardClickHandler={this.cardClickHandler}
@@ -150,8 +159,11 @@ class App extends Component {
               name={friend.name}
               image={still}
               hidden={friend.matched}
+              disableAll={this.state.allDisabled}
             />
           ))}
+          <Modal id="modal1" header={this.state.matchedText} fixedFooter>
+          </Modal>
         </Wrapper>
         <Footer>Made by 
           <a className="orange-text text-lighten-3" href="http://materializecss.com">Materialize
