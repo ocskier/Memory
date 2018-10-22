@@ -164,7 +164,8 @@ class App extends Component {
               disableAll={this.state.allDisabled}
             />
           ))}
-          <Modal id="modal1" header={winText} style={{textAlign: "center"}} fixedFooter>
+          <Modal id="modal1" header={winText} fixedFooter>
+            <div style={{display: "flex", justifyContent: "space-evenly"}}>
             { this.state.chosen.map(friend => (
               <FriendCard
                 id={friend.id}
@@ -174,10 +175,11 @@ class App extends Component {
               />
             ))
             }
+            </div>
           </Modal>
         </Wrapper>
-        <Footer>Made by 
-          <a className="orange-text text-lighten-3" href="http://materializecss.com">Materialize
+        <Footer>Made with 
+          <a className="orange-text text-lighten-3" href="http://materializecss.com"> Materialize
           </a>
         </Footer>
       </div>

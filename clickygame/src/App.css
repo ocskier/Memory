@@ -3,3 +3,23 @@
   text-align: center;
   margin-bottom: 50px;
 }
+
+#modal1 {
+  text-Align: center;
+  height: 60%;
+  width: 40%;
+}
+
+@media screen and (max-width: 768px) {
+  #modal1 card {
+
+      width: 50%;   
+  }
+  #modal1 card img {
+    padding-top: 80px;
+  }
+
+  #modal1 card span {
+    font-size: 0.8rem;
+  }
+}
