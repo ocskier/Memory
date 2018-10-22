@@ -4,7 +4,7 @@ import Button from "./button";
 
 const StyleSheet = {
     header: {
-        padding: "1.2rem 2rem",
+        padding: "1rem 6rem 0",
         background:"silver",
         textAlign: "center",
         marginBottom: 0,

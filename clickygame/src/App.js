@@ -13,6 +13,7 @@ import "./App.css";
 
 
 declare var $ : any;
+const winText = "You have a Match!";
 const still = "./question-mark-1872665_1280.jpg"
 
 class App extends Component {
@@ -22,7 +23,6 @@ class App extends Component {
     score: 0,
     wrong: 0,
     guesses: 0,
-    matchedText: "You have a Match!",
     chosen: [],
     allDisabled: false
   };
@@ -32,7 +32,7 @@ class App extends Component {
     const friendsX2 = this.duplicFriends(friends);
     this.setState({
       friends: this.shuffleArray(friendsX2)
-    });
+    },() => $('#modal1').modal({onCloseStart: () => this.setState({ chosen: [] },() => this.resetImgs())}));
   }
 
   startOver = (e) => {
@@ -45,7 +45,7 @@ class App extends Component {
   cardClickHandler = (e,id) => {
     e.preventDefault();
     const friendIndex = this.state.friends.findIndex(friend => friend.id===id);
-    const pickName = this.state.friends[friendIndex].name;
+    const {name,image} = this.state.friends[friendIndex];
     console.log(friendIndex);
     this.setState({
       friends: this.state.friends.map((friend) => {
@@ -55,7 +55,7 @@ class App extends Component {
         return friend
       }),
       guesses: this.state.guesses + 1,
-      chosen: this.state.chosen.concat({id:id,name:pickName})
+      chosen: this.state.chosen.concat({id:id,name:name,image:image})
     },() => {
       console.log(this.state);
       this.handleGuesses();
@@ -69,11 +69,8 @@ class App extends Component {
           score: this.state.score + 1,
           guesses: 0
           },
-          () => this.setState({ chosen: [] },() => {
-            this.resetImgs();
-            $('#modal1').modal('open');
-          })
-          )
+          () => $('#modal1').modal('open')
+        )
     } 
     else if (this.state.guesses === 2 && !(this.state.chosen[0].name === this.state.chosen[1].name)) {
         console.log("Loaded");  
@@ -126,6 +123,11 @@ class App extends Component {
     return doubledFriends
   }
 
+  copyFriends = () => {
+    const friendsCopy = friends;
+    return friendsCopy
+  }
+
   // shuffleFriends = () => {
   //   // Filter this.state.friends for friends with an id not equal to the id being removed
   //   const friends = this.randomizeFriends(this.state.friends);
@@ -162,7 +164,16 @@ class App extends Component {
               disableAll={this.state.allDisabled}
             />
           ))}
-          <Modal id="modal1" header={this.state.matchedText} fixedFooter>
+          <Modal id="modal1" header={winText} style={{textAlign: "center"}} fixedFooter>
+            { this.state.chosen.map(friend => (
+              <FriendCard
+                id={friend.id}
+                key={friend.id}
+                name={friend.name}
+                image={friend.image}
+              />
+            ))
+            }
           </Modal>
         </Wrapper>
         <Footer>Made by 
