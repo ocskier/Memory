@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+    nav p {
+        font-size: 2rem !important;
+    }
+    .nav-wrapper {
+        padding: 1rem 2rem 0px !important;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    nav p {
+        font-size: 1.5rem !important;
+    }
+    .nav-wrapper {
+        padding: 1rem 0 0px !important;
+    }
+}

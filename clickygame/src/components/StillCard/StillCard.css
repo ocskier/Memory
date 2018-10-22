@@ -1,7 +1,6 @@
 button {
   cursor: pointer;
   position: relative;
-  animation: shake 5s ease-in;
 }
 
 @keyframes shake {
@@ -25,10 +24,6 @@ button {
   margin: 0 5px 5px;
 }
 
-.card > .img-container > img {
-  width: 60%
-}
-
 .card > .remove {
   color: #ff1744;
   font-size: 48px;
@@ -44,12 +39,28 @@ button {
 
 @media screen and (max-width: 976px) {
   .card {
-    width: 24%;   
+    width: 20%;   
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 784px) {
   .card {
-    width: 30%;   
+    height: 125px !important;
+    width: 22%;   
+  }
+  
+  .stillImg {
+      height: 150px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    height: 88px !important;
+    width: 18%;   
+  }
+
+  .stillImg {
+    height: 100px !important;
   }
 }

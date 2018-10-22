@@ -2,6 +2,8 @@ import React from "react";
 
 import Button from "./button";
 
+import "./Header.css";
+
 const StyleSheet = {
     header: {
         padding: "1rem 6rem 0",

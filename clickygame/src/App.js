@@ -14,7 +14,7 @@ import "./App.css";
 
 declare var $ : any;
 const winText = "You have a Match!";
-const still = "./question-mark-1872665_1280.jpg"
+const still = "./Fortnite/PREVIEW_SCREENSHOT.jpg"
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
@@ -24,22 +24,40 @@ class App extends Component {
     wrong: 0,
     guesses: 0,
     chosen: [],
-    allDisabled: false
+    allDisabled: false,
+    reset: false
   };
 
   componentDidMount = () => {
 
     const friendsX2 = this.duplicFriends(friends);
-    this.setState({
-      friends: this.shuffleArray(friendsX2)
-    },() => $('#modal1').modal({onCloseStart: () => this.setState({ chosen: [] },() => this.resetImgs())}));
+    this.shakeImgs(() => this.setState({
+        friends: this.shuffleArray(friendsX2)
+      },
+      () => $('#modal1').modal({
+        onCloseStart: () => this.setState({
+            chosen: []
+          },
+          () => this.resetImgs())
+      })));
   }
 
   startOver = (e) => {
-    console.log(e);
     e.preventDefault();
     const origFriends = this.duplicFriends(friends); 
-    this.setState({friends: this.shuffleArray(origFriends), score: 0, wrong: 0, guesses: 0,chosen: []},() => console.log(this.state.friends));
+    this.shakeImgs(() => this.setState({
+        friends: this.shuffleArray(origFriends),
+        score: 0,
+        wrong: 0,
+        guesses: 0,
+        chosen: []
+      },
+      () => console.log(this.state.friends)));
+  }
+
+  shakeImgs = (callback) => {
+    this.setState({reset: true});
+    callback();
   }
 
   cardClickHandler = (e,id) => {
@@ -48,76 +66,90 @@ class App extends Component {
     const {name,image} = this.state.friends[friendIndex];
     console.log(friendIndex);
     this.setState({
-      friends: this.state.friends.map((friend) => {
-        if (friend.id === id) {
-        friend = {...friend, userSelected : true}
-        }
-        return friend
-      }),
-      guesses: this.state.guesses + 1,
-      chosen: this.state.chosen.concat({id:id,name:name,image:image})
-    },() => {
-      console.log(this.state);
-      this.handleGuesses();
-    });
+        friends: this.state.friends.map((friend) => {
+          if (friend.id === id) {
+            friend = { ...friend,
+              userSelected: true
+            }
+          }
+          return friend
+        }),
+        guesses: this.state.guesses + 1,
+        chosen: this.state.chosen.concat({
+          id: id,
+          name: name,
+          image: image
+        }),
+        reset: false
+      },
+      () => {
+        console.log(this.state);
+        this.handleGuesses();
+      });
   }
 
   handleGuesses = () => {
     if (this.state.guesses === 2 && (this.state.chosen[0].name === this.state.chosen[1].name)) {
-        this.setState({
+      this.setState({
           friends: this.removeMatch(),
           score: this.state.score + 1,
           guesses: 0
-          },
-          () => $('#modal1').modal('open')
-        )
-    } 
-    else if (this.state.guesses === 2 && !(this.state.chosen[0].name === this.state.chosen[1].name)) {
-        console.log("Loaded");  
-        this.setState({
-          wrong: this.state.wrong + 1, 
-          guesses: 0,
-          chosen: [],
-          allDisabled: true
-        }, () => {setTimeout(this.resetImgs,3000)}
-        )
+        },
+        () => $('#modal1').modal('open')
+      )
+    } else if (this.state.guesses === 2 && !(this.state.chosen[0].name === this.state.chosen[1].name)) {
+      console.log("Loaded");
+      this.setState({
+        wrong: this.state.wrong + 1,
+        guesses: 0,
+        chosen: [],
+        allDisabled: true
+      }, () => {
+        setTimeout(this.resetImgs, 3000)
+      })
     }
   }
 
   removeMatch = () => {
     // const remainingFriends = this.state.friends.filter(friend => friend.id !== this.state.chosen[0].id)
     // .filter(friend => friend.id !== this.state.chosen[1].id);
-      const remainingFriends = this.state.friends.map((friend) => {
-        if ((friend.id === this.state.chosen[0].id) || (friend.id === this.state.chosen[1].id)) {
-          friend = {...friend, matched:true}
+    const remainingFriends = this.state.friends.map((friend) => {
+      if ((friend.id === this.state.chosen[0].id) || (friend.id === this.state.chosen[1].id)) {
+        friend = { ...friend,
+          matched: true
         }
-        return friend
-      });
+      }
+      return friend
+    });
     return remainingFriends
   }
 
   resetImgs = () => {
-     this.setState({
+    this.setState({
       friends: this.state.friends.map((friend) => {
-        friend = {...friend, userSelected:false}
+        friend = { ...friend,
+          userSelected: false
+        }
         return friend
-        }),
+      }),
       allDisabled: false
-      },()=> console.log(this.state));
+    }, () => console.log(this.state));
   }
 
   shuffleArray = (friends) => {
     const newArray = friends;
-    for (let i = newArray.length-1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i+1));
-      [newArray[i],newArray[j]] = [newArray[j],newArray[i]];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
     return newArray
-  } 
+  }
 
   duplicFriends = (friends) => {
-    const doubledFriends = friends.concat(friends).map((friend,index) => {
-      friend = {...friend, id:index+1}
+    const doubledFriends = friends.concat(friends).map((friend, index) => {
+      friend = { ...friend,
+        id: index + 1
+      }
       return friend
     });
     return doubledFriends
@@ -161,10 +193,11 @@ class App extends Component {
               name={friend.name}
               image={still}
               hidden={friend.matched}
+              reset={this.state.reset}
               disableAll={this.state.allDisabled}
             />
           ))}
-          <Modal id="modal1" header={winText} fixedFooter>
+          <Modal id="modal1" header={winText} fixedFooter><br></br>
             <div style={{display: "flex", justifyContent: "space-evenly"}}>
             { this.state.chosen.map(friend => (
               <FriendCard

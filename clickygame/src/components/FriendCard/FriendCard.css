@@ -8,10 +8,6 @@
   margin: 0 5px 5px;
 }
 
-.card > .img-container > img {
-  width: 60%
-}
-
 /* .card > .content {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -46,6 +42,23 @@
 
 @media screen and (max-width: 768px) {
   .card {
-    width: 30%;   
+    height: 122px !important;
+    width: 22%;   
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    height: 88px !important;
+    width: 18%;   
+  }
+
+  .friendImg {
+    padding-top: 28px !important;
+  }
+
+  .card span {
+    padding: 10px !important;
+    font-size: 0.5rem !important;
   }
 }
