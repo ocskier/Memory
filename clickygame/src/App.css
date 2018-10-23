@@ -11,6 +11,11 @@
 }
 
 @media screen and (max-width: 768px) {
+  
+  #modal1 {
+    height: 40%;
+    width: 65%;
+  }
   #modal1 card {
 
       width: 50%;   

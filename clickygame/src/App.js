@@ -25,7 +25,8 @@ class App extends Component {
     guesses: 0,
     chosen: [],
     allDisabled: false,
-    reset: false
+    reset: false,
+    lowScore: localStorage.getItem("score") ? localStorage.getItem("score") : 99
   };
 
   componentDidMount = () => {
@@ -38,8 +39,19 @@ class App extends Component {
         onCloseStart: () => this.setState({
             chosen: []
           },
-          () => this.resetImgs())
-      })));
+          () => {
+            this.resetImgs(); 
+            if (this.state.score===12 && (this.state.wrong < this.state.lowScore)) {
+              this.setState({lowScore: this.state.wrong}, () => {
+                localStorage.setItem("score",this.state.lowScore);
+                console.log(localStorage.getItem("score"));
+              });
+            }
+          }
+        )}
+      )
+    )
+    );
   }
 
   startOver = (e) => {
@@ -173,10 +185,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Jumbotron score={this.state.score} wrong={this.state.wrong} startOver={this.startOver}>Clicky Game
+        <Jumbotron lowscore={this.state.lowScore} score={this.state.score} wrong={this.state.wrong} startOver={this.startOver}>Memory
         </Jumbotron>
         <Wrapper>
-          <Title>Try for a Match!</Title>
+          <Title>{this.state.score !== 12 ? "Find a Fortnite Match!" : "You won!" }</Title>
           {this.state.friends.map(friend => (
             friend.userSelected ? 
             <FriendCard

@@ -19,6 +19,9 @@ const Jumbotron = (props) => {
     return (
         <nav style={{height: "160px"}}>
             <div className="nav-wrapper" style={StyleSheet.header}>
+                <ul className="left">
+                    <li style={{display: "grid",paddingRight:"10px"}}>Low Score<button className="btn-floating btn-large black">{props.lowscore}</button></li>
+                </ul>
                 <p className="brand-logo center" style={{fontSize: "4rem"}}>{props.children}<br></br><Button startOver={props.startOver}>Start Again</Button></p>
                 <ul className="right">
                     <li style={{display: "grid",paddingRight:"10px"}}>Score<button className="btn-floating btn-large blue">{props.score}</button></li>
