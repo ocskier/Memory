@@ -12,7 +12,6 @@ import friends from "./friends.json";
 import "./App.css";
 
 import jjdb from "./DB/db.js"
-console.log(jjdb);
 
 declare var $ : any;
 const winText = "You have a Match!";
