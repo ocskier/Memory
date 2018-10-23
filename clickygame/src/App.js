@@ -11,6 +11,8 @@ import Title from "./components/Title";
 import friends from "./friends.json";
 import "./App.css";
 
+import jjdb from "./DB/db.js"
+console.log(jjdb);
 
 declare var $ : any;
 const winText = "You have a Match!";
@@ -26,11 +28,25 @@ class App extends Component {
     chosen: [],
     allDisabled: false,
     reset: false,
-    lowScore: localStorage.getItem("score") ? localStorage.getItem("score") : 99
+    lowScore: "-"
   };
+
+  getLowScore = () => {
+    jjdb.on("child_added", (snapshot) => {
+      this.setState({lowScore: snapshot.val().score});
+    });
+  }
+  updateLowScore = () => {
+    jjdb.orderByChild('score').once('value').then((snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          jjdb.child(childSnapshot.key).set({score: this.state.lowScore});
+        });
+    });
+  }
 
   componentDidMount = () => {
 
+    this.getLowScore();
     const friendsX2 = this.duplicFriends(friends);
     this.shakeImgs(() => this.setState({
         friends: this.shuffleArray(friendsX2)
@@ -42,10 +58,7 @@ class App extends Component {
           () => {
             this.resetImgs(); 
             if (this.state.score===12 && (this.state.wrong < this.state.lowScore)) {
-              this.setState({lowScore: this.state.wrong}, () => {
-                localStorage.setItem("score",this.state.lowScore);
-                console.log(localStorage.getItem("score"));
-              });
+              this.setState({lowScore: this.state.wrong}, () => this.updateLowScore());
             }
           }
         )}
