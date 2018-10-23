@@ -14,7 +14,7 @@ import "./App.css";
 
 declare var $ : any;
 const winText = "You have a Match!";
-const still = "./Fortnite/BX-XN.jpg"
+const still = "./Fortnite/BN-XN.jpg"
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
