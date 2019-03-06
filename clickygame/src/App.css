@@ -10,11 +10,24 @@
   width: 40%;
 }
 
-@media screen and (max-width: 768px) {
+#modal1 card {
+  width: 35%;
+}
+
+#modal1 card img {
+  padding-top: 40px;
+}
+
+@media screen and (max-width: 976px) {
   #modal1 {
-    height: 40%;
+    height: 70%;
     width: 65%;
   }
+
+  #modal1 card {
+    width: 50%;   
+  }
+  
   #modal1 card img {
     padding-top: 40px !important;
   }
@@ -23,9 +36,6 @@
 
 @media screen and (max-width: 768px) {
   
-  #modal1 card {
-      width: 50%;   
-  }
   #modal1 card span {
     font-size: 0.8rem;
   }

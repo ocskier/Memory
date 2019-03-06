@@ -18,4 +18,4 @@ firebase.initializeApp(config);
 const db = firebase.database();
 const jjdb = db.ref("Memory");
 
-export default jjdb
+export default jjdb;
