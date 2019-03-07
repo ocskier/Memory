@@ -47,7 +47,7 @@ class MyProvider extends Component {
     getLowScore = (callback) => {
         jjdb.on("child_added", (snapshot) => {
             this.setState({
-                lowScore: snapshot.val()
+                lowScore: snapshot.val().score
             });
         });
         callback();
