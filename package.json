@@ -1,6 +1,6 @@
 {
-  "name": "clickygame",
-  "homepage": "https://ocskier.github.io/Clicky-Game/",
+  "name": "memory",
+  "homepage": "https://ocskier.github.io/Memory/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
