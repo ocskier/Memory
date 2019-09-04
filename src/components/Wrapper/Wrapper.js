@@ -25,6 +25,8 @@ const Wrapper = () => (
                         key={friend.id}
                         name={friend.name}
                         image={friend.image}
+                        matched={friend.matched}
+                        allDisabled={context.myGameState.allDisabled}
                     /> :
                     <StillCard
                         cardClickHandler={context.cardClickHandler}
@@ -38,18 +40,18 @@ const Wrapper = () => (
                     />
                     ))}
                 </div>
-                <Modal id="modal1" header={winText} fixedFooter><br></br>
-                <div style={{display: "flex", justifyContent: "space-evenly"}}>
-                { context.myGameState.chosen.map(friend => (
-                    <FriendCard
-                    id={friend.id}
-                    key={friend.id}
-                    name={friend.name}
-                    image={friend.image}
-                    />
-                ))
-                }
-                </div>
+                <Modal className="animated zoomInUp" id="modal1" header={winText} fixedFooter><br></br>
+                    <div style={{display: "flex", justifyContent: "space-evenly"}}>
+                        { context.myGameState.chosen.map(friend => (
+                            <FriendCard
+                            id={friend.id}
+                            key={friend.id}
+                            name={friend.name}
+                            image={friend.image}
+                            />
+                        ))
+                        }
+                    </div>
                 </Modal>
             </div>
         )}

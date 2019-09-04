@@ -110,23 +110,20 @@ class MyProvider extends Component {
                 score: this.state.score + 1,
                 guesses: 0
             },
-            () => $('#modal1').modal('open')
-            )
+                () => setTimeout(() => $('#modal1').modal('open'), 1200)
+            );
         } else if (this.state.guesses === 2 && !(this.state.chosen[0].name === this.state.chosen[1].name)) {
-            this.setState({
-            wrong: this.state.wrong + 1,
-            guesses: 0,
-            chosen: [],
-            allDisabled: true
-            }, () => {
-            setTimeout(this.resetImgs, 3000)
-            })
+            setTimeout(() => this.setState({
+                wrong: this.state.wrong + 1,
+                guesses: 0,
+                chosen: [],
+                allDisabled: true
+            }, 
+                () => setTimeout(this.resetImgs, 2200)), 800)
         }
     }
 
     removeMatch = () => {
-        // const remainingFriends = this.state.friends.filter(friend => friend.id !== this.state.chosen[0].id)
-        // .filter(friend => friend.id !== this.state.chosen[1].id);
         const remainingFriends = this.state.friends.map((friend) => {
             if ((friend.id === this.state.chosen[0].id) || (friend.id === this.state.chosen[1].id)) {
                 friend = {
