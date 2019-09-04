@@ -8,3 +8,9 @@
   margin: 0 auto;
   padding: 0 40px 100px;
 }
+
+.cardHolderDiv {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

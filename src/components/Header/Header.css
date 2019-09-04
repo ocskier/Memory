@@ -1,3 +1,9 @@
+.resetBtn {
+    width: fit-content;
+    margin: 0 auto;
+    bottom: 20px;
+}
+
 @media screen and (max-width: 768px) {
     nav p {
         font-size: 2rem !important;
@@ -9,9 +15,25 @@
 
 @media screen and (max-width: 576px) {
     nav p {
-        font-size: 1.5rem !important;
+        font-size: 2.0rem !important;
     }
     .nav-wrapper {
         padding: 1rem 0 0px !important;
+    }
+    .scoreBtn {
+        width: 36px !important;
+        height: 36px !important;
+        line-height: 36px !important;
+        font-size: 11px !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    nav p {
+        font-size: 1.4rem !important;
+        top: -8px;
+    }
+    .resetBtn {
+        bottom: -8px !important;
     }
 }

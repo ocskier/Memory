@@ -16,26 +16,28 @@ const Wrapper = () => (
         {context => (
             <div className="wrapper">
                 <Title>{context.myGameState.score !== 12 ? "Find a Fortnite Match!" : "You won!" }</Title>
-                {context.myGameState.friends.map(friend => (
-                friend.userSelected ? 
-                <FriendCard
-                    // cardClickHandler={context.cardClickHandler}
-                    id={friend.id}
-                    key={friend.id}
-                    name={friend.name}
-                    image={friend.image}
-                /> :
-                <StillCard
-                    cardClickHandler={context.cardClickHandler}
-                    id={friend.id}
-                    key={friend.id}
-                    name={friend.name}
-                    image={still}
-                    hidden={friend.matched}
-                    reset={context.myGameState.reset}
-                    disableAll={context.myGameState.allDisabled}
-                />
-                ))}
+                <div className="cardHolderDiv">
+                    {context.myGameState.friends.map(friend => (
+                    friend.userSelected ? 
+                    <FriendCard
+                        // cardClickHandler={context.cardClickHandler}
+                        id={friend.id}
+                        key={friend.id}
+                        name={friend.name}
+                        image={friend.image}
+                    /> :
+                    <StillCard
+                        cardClickHandler={context.cardClickHandler}
+                        id={friend.id}
+                        key={friend.id}
+                        name={friend.name}
+                        image={still}
+                        hidden={friend.matched}
+                        reset={context.myGameState.reset}
+                        disableAll={context.myGameState.allDisabled}
+                    />
+                    ))}
+                </div>
                 <Modal id="modal1" header={winText} fixedFooter><br></br>
                 <div style={{display: "flex", justifyContent: "space-evenly"}}>
                 { context.myGameState.chosen.map(friend => (

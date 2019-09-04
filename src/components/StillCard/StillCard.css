@@ -3,7 +3,8 @@ button {
   position: relative;
 }
 
-@keyframes shake {
+/* style={props.reset ? {animation: "shake 0.7s"} : {animation: "none"}} */
+/* @keyframes shake {
   0% {transform:
     translate(1px,1px) rotate(0deg)}
   10% {transform:
@@ -26,14 +27,14 @@ button {
     translate(1px,2px) rotate(0deg)}
   100% {transform:
     translate(1px,-2px) rotate(-1deg)}
-}
+} */
 
 .card {
   overflow: hidden;
   max-height: 200px;
   border-radius: 10px;
   position: relative;
-  width:16%;
+  width: 200px;
   /* box-shadow: 0 3px 6px #999, 0 3px 6px #999; */
   margin: 0 5px 5px;
 }

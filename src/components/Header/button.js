@@ -1,8 +1,9 @@
 import React from "react"
+import classnames from "classnames";
 
 const Button = (props) => {
     return(
-        <button className="btn btn-small black" onClick={(e)=> props.startOver(e)}>{props.children}</button>
+        <button className={classnames("btn", "btn-small", "black", props.classes)} style={props.styles} onClick={(e)=> props.startOver(e)}>{props.children}</button>
     )
 }
 

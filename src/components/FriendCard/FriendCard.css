@@ -4,23 +4,9 @@
   max-height: 140px;
   position: relative;
   /* box-shadow: 0 3px 6px #999, 0 3px 6px #999; */
-  width:16%;
+  width: 200px;
   margin: 0 5px 5px;
 }
-
-/* .card > .content {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 15px;
-}
-
-.card > .content > ul {
-  list-style-type: none;
-}
-
-.card > .content > ul > li {
-  margin-top: 18px;
-} */
 
 .card > .remove {
   color: #ff1744;
