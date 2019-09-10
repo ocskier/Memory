@@ -31,7 +31,7 @@ const Header = () => (
                                 </button>
                             </li>
                         </ul>
-                        <p className="brand-logo center" style={{fontSize: "4rem"}}>Memory</p>
+                        <p className="brand-logo center" style={{fontSize: "4rem", bottom: "10%"}}>Memory</p>
                         <ul className="right">
                             <li style={{display: "grid",paddingRight:"10px"}}>Score
                                 <button className="btn-floating btn-large blue scoreBtn">

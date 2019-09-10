@@ -2,11 +2,12 @@
     width: fit-content;
     margin: 0 auto;
     bottom: 20px;
+    overflow: initial;
 }
 
 @media screen and (max-width: 768px) {
     nav p {
-        font-size: 2rem !important;
+        font-size: 3rem !important;
     }
     .nav-wrapper {
         padding: 1rem 2rem 0px !important;
@@ -15,7 +16,8 @@
 
 @media screen and (max-width: 576px) {
     nav p {
-        font-size: 2.0rem !important;
+        font-size: 3.0rem !important;
+        bottom: 12%;
     }
     .nav-wrapper {
         padding: 1rem 0 0px !important;
@@ -25,6 +27,9 @@
         height: 36px !important;
         line-height: 36px !important;
         font-size: 11px !important;
+    }
+    .resetBtn {
+        bottom: 0
     }
 }
 
