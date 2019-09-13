@@ -1,5 +1,5 @@
 .card {
-  border-radius: 10px;
+  border-radius: 10px !important;
   overflow: hidden;
   max-height: 140px;
   position: relative;
