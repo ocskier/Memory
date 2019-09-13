@@ -23,24 +23,31 @@ class MyProvider extends Component {
     componentDidMount = () => {
         this.getLowScore(() => {
             const friendsX2 = this.duplicFriends(friends);
-            this.shakeImgs(() => this.setState({
+            this.shakeImgs(
+                () => this.setState({
                     friends: this.shuffleArray(friendsX2)
                 },
-                () => $('#modal1').modal({
-                    onCloseStart: () => this.setState({
-                            chosen: []
-                        },
-                        () => {
-                            this.resetImgs();
-                            if (this.state.score === 12 && (this.state.wrong < this.state.lowScore)) {
-                                this.setState({
-                                    lowScore: this.state.wrong
-                                }, () => this.updateLowScore());
-                            }
-                        }
-                    )
-                })
-            ));
+                    () => {
+                        $('#modal1').modal({
+                            onCloseStart: () => this.setState({
+                                chosen: []
+                            },
+                                () => {
+                                    this.resetImgs();
+                                    if (this.state.score === 12 && (this.state.wrong < this.state.lowScore)) {
+                                        this.setState({
+                                            lowScore: this.state.wrong
+                                        }, () => 
+                                            this.updateLowScore()
+                                        );
+                                    }
+                                }
+                            )
+                        });
+                        $('#modal2').modal();
+                    }
+                )
+            );
         });
     }
 

@@ -9,6 +9,7 @@ import Title from "../Title";
 import MyContext from "../Context";
 
 const winText = "You have a Match!";
+const gameOverTxt = "You won!!!";
 const still = "./Fortnite/BN-XN.jpg";
 
 const Wrapper = () => (
@@ -40,7 +41,7 @@ const Wrapper = () => (
                     />
                     ))}
                 </div>
-                <Modal className="animated zoomInUp" id="modal1" header={winText} fixedFooter><br></br>
+                <Modal className="animated fadeIn" id="modal1" header={winText} fixedFooter><br></br>
                     <div style={{display: "flex", justifyContent: "space-evenly"}}>
                         { context.myGameState.chosen.map(friend => (
                             <FriendCard
@@ -52,6 +53,8 @@ const Wrapper = () => (
                         ))
                         }
                     </div>
+                </Modal>
+                <Modal className="animated lightSpeedIn" id="modal2" header={gameOverTxt} >
                 </Modal>
             </div>
         )}
