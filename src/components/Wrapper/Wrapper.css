@@ -1,16 +1,26 @@
 .wrapper {
   min-height: calc(100vh - 100px);
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-content: flex-start;
   overflow: auto;
   margin: 0 auto;
   padding: 0 40px 100px;
 }
 
 .cardHolderDiv {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  grid-gap: 20px;
+  display: grid;
+  grid-template-areas: "a a a a a a";
+}
+
+@media screen and (max-width: 1156px) {
+  .cardHolderDiv {
+    grid-template-areas: "a a a a";   
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cardHolderDiv {
+    grid-template-areas: "a a a";
+  }
 }

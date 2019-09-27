@@ -4,7 +4,7 @@
   max-height: 140px;
   position: relative;
   /* box-shadow: 0 3px 6px #999, 0 3px 6px #999; */
-  width: 200px;
+  width: auto;
   margin: 0 5px 5px;
 }
 
@@ -21,29 +21,50 @@
   color: #d50000;
 }
 
+span {
+  font-size: 1.3rem !important;
+}
+
 .disabled {
   display: none
 }
 
+@media screen and (max-width: 1356px) {
+  span {
+    font-size: 1.1rem !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .card {
-    height: 122px !important;
-    width: 22%;   
+    height: 175px !important;
+  }
+  .friendImg {
+    height: 175px !important;
+  }
+  span {
+    font-size: 1rem !important;
   }
 }
 
 @media screen and (max-width: 576px) {
   .card {
-    height: 88px !important;
-    width: 18%;   
+    height: 125px !important;
   }
 
   .friendImg {
     padding-top: 28px !important;
+    height: 125px !important;
   }
 
   .card span {
     padding: 10px !important;
-    font-size: 0.5rem !important;
+    font-size: 0.6rem !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .card span {
+    font-size: 0.4rem !important;
   }
 }

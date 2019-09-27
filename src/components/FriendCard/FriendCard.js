@@ -37,7 +37,6 @@ const FriendCard = props => (
           padding: "12px",
           width: "100%",
           textAlign: "center",
-          fontSize: "1rem"
         }}
       >
         {props.name}

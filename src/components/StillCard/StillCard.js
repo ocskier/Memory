@@ -1,7 +1,7 @@
 import React from "react";
 import "./StillCard.css";
 
-const winner = "./check-mark-1292787_1280.png";
+// const winner = "./check-mark-1292787_1280.png";
 
 const StillCard = props => (
   <div
@@ -10,6 +10,7 @@ const StillCard = props => (
         ? "card z-depth-5 small animated shake"
         : "card z-depth-5 small"
     }
+    style={props.hidden? {opacity: 0} : null}
   >
     <button
       style={{
@@ -25,7 +26,7 @@ const StillCard = props => (
     >
       <div
         className="card-image"
-        style={{ maxHeight: "100%", borderRadius: "10px !important" }}
+        style={{ maxHeight: "100%", borderRadius: "10px !important"}}
       >
         <img
           className="stillImg"
@@ -38,7 +39,7 @@ const StillCard = props => (
             height: "210px"
           }}
           alt={props.name}
-          src={props.hidden ? winner : props.image}
+          src={props.image}
         />
       </div>
     </button>
