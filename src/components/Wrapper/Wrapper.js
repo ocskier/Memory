@@ -16,7 +16,8 @@ const Wrapper = () => (
     <MyContext.Consumer>
         {context => (
             <div className="wrapper">
-                <Title>{context.myGameState.score !== 12 ? "Find a Fortnite Match!" : "You won!" }</Title>
+                {context.myGameState.score !== 12 && <Title>Find a Fortnite Match!</Title>}
+                {context.myGameState.score === 12 && <Title className="animated slideInRight">You won!</Title>}
                 <div className="cardHolderDiv">
                     {context.myGameState.friends.map(friend => (
                     friend.userSelected ? 
