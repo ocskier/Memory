@@ -10,7 +10,7 @@ import MyContext from "../Context";
 
 const winText = "You have a Match!";
 const gameOverTxt = "You won!!!";
-const still = "./Fortnite/BN-XN.jpg";
+const still = "/Fortnite/BN-XN.jpg";
 
 const Wrapper = () => (
   <MyContext.Consumer>

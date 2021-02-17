@@ -27,7 +27,7 @@ const FriendCard = props => (
           borderRadius: "10px !important"
         }}
         alt={props.name}
-        src={props.image}
+        src={process.env.PUBLIC_URL + props.image}
       />
       <span
         className="card-title black-text"

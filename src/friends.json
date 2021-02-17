@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Crackshot",
-    "image": "./Fortnite/Crackshot.jpg",
+    "image": "/Fortnite/Crackshot.jpg",
     "occupation": "Fry Cook",
     "location": "A Pineapple Under the Sea",
     "userSelected": false,
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "name": "CuddleTeamLeader",
-    "image": "./Fortnite/cuddleteamleader.jpg",
+    "image": "/Fortnite/cuddleteamleader.jpg",
     "occupation": "Restaurant Owner",
     "location": "A Giant Anchor",
     "userSelected": false,
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "name": "Default",
-    "image": "./Fortnite/Default Skin.jpg",
+    "image": "/Fortnite/Default Skin.jpg",
     "occupation": "Cashier",
     "location": "An Easter Island Head",
     "userSelected": false,
@@ -29,7 +29,7 @@
   {
     "id": 4,
     "name": "Durr Burger",
-    "image": "./Fortnite/Durr Burger.jpg",
+    "image": "/Fortnite/Durr Burger.jpg",
     "occupation": "Boy Genius",
     "location": "A Secret Laboratory",
     "userSelected": false,
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "name": "John Wick",
-    "image": "./Fortnite/John Wick.jpg",
+    "image": "/Fortnite/John Wick.jpg",
     "occupation": "A Cowardly Dog",
     "location": "Nowhere, Kansas",
     "userSelected": false,
@@ -47,7 +47,7 @@
   {
     "id": 6,
     "name": "Love Ranger",
-    "image": "./Fortnite/Love Ranger.jpg",
+    "image": "/Fortnite/Love Ranger.jpg",
     "occupation": "Student",
     "location": "Bluffington",
     "userSelected": false,
@@ -56,7 +56,7 @@
   {
     "id": 7,
     "name": "Merry Marauder",
-    "image": "./Fortnite/Merry Marauder.jpg",
+    "image": "/Fortnite/Merry Marauder.jpg",
     "occupation": "Looney Toon",
     "location": "A Rabbit Burrow",
     "userSelected": false,
@@ -65,7 +65,7 @@
   {
     "id": 8,
     "name": "Oblivion",
-    "image": "./Fortnite/Oblivion-orig.png",
+    "image": "/Fortnite/Oblivion-orig.png",
     "occupation": "Ladies Man",
     "location": "Aron City",
     "userSelected": false,
@@ -74,7 +74,7 @@
   {
     "id": 9,
     "name": "Red Knight",
-    "image": "./Fortnite/Red Knight.jpg",
+    "image": "/Fortnite/Red Knight.jpg",
     "occupation": "Adventurer",
     "location": "California",
     "userSelected": false,
@@ -83,7 +83,7 @@
   {
     "id": 10,
     "name": "Skull Trooper",
-    "image": "./Fortnite/SkullTrooper.jpg",
+    "image": "/Fortnite/SkullTrooper.jpg",
     "occupation": "Cashier",
     "location": "O-Town, California",
     "userSelected": false,
@@ -92,7 +92,7 @@
   {
     "id": 11,
     "name": "Valor",
-    "image": "./Fortnite/Valor.jpg",
+    "image": "/Fortnite/Valor.jpg",
     "occupation": "Superhero",
     "location": "Earth",
     "userSelected": false,
@@ -101,7 +101,7 @@
   {
     "id": 12,
     "name": "Whiplash",
-    "image": "./Fortnite/Whiplash.jpg",
+    "image": "/Fortnite/Whiplash.jpg",
     "occupation": "Ahhhh! A Real Monster!",
     "location": "Under a City Dump",
     "userSelected": false,

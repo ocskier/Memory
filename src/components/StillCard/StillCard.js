@@ -39,7 +39,7 @@ const StillCard = props => (
             height: "210px"
           }}
           alt={props.name}
-          src={props.image}
+          src={process.env.PUBLIC_URL + props.image}
         />
       </div>
     </button>
