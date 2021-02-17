@@ -9,18 +9,21 @@ import MyProvider from "./components/Provider";
 import "./App.css";
 
 class App extends Component {
-
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
       <MyProvider>
         <div>
-          <Header>
-          </Header>
-          <Wrapper>
-          </Wrapper>
-          <Footer>Made with 
-            <a className="orange-text text-lighten-3" href="http://materializecss.com"> Materialize
+          <Header></Header>
+          <Wrapper></Wrapper>
+          <Footer>
+            Made with
+            <a
+              className="orange-text text-lighten-3"
+              href="http://materializecss.com"
+            >
+              {" "}
+              Materialize
             </a>
           </Footer>
         </div>

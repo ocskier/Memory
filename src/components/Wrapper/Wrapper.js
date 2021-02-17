@@ -1,7 +1,7 @@
 import React from "react";
 import "./Wrapper.css";
 
-import {Modal} from 'react-materialize';
+import { Modal } from "react-materialize";
 
 import FriendCard from "../FriendCard";
 import StillCard from "../StillCard";
@@ -13,52 +13,65 @@ const gameOverTxt = "You won!!!";
 const still = "./Fortnite/BN-XN.jpg";
 
 const Wrapper = () => (
-    <MyContext.Consumer>
-        {context => (
-            <div className="wrapper">
-                {context.myGameState.score !== 12 && <Title>Find a Fortnite Match!</Title>}
-                {context.myGameState.score === 12 && <Title className="animated slideInRight">You won!</Title>}
-                <div className="cardHolderDiv">
-                    {context.myGameState.friends.map(friend => (
-                    friend.userSelected ? 
-                    <FriendCard
-                        // cardClickHandler={context.cardClickHandler}
-                        id={friend.id}
-                        key={friend.id}
-                        name={friend.name}
-                        image={friend.image}
-                        matched={friend.matched}
-                        allDisabled={context.myGameState.allDisabled}
-                    /> :
-                    <StillCard
-                        cardClickHandler={context.cardClickHandler}
-                        id={friend.id}
-                        key={friend.id}
-                        name={friend.name}
-                        image={still}
-                        hidden={friend.matched}
-                        reset={context.myGameState.reset}
-                        disableAll={context.myGameState.allDisabled}
-                    />
-                    ))}
-                </div>
-                <Modal className="animated fadeIn" id="modal1" header={winText} fixedFooter><br></br>
-                    <div style={{display: "flex", justifyContent: "space-evenly"}}>
-                        { context.myGameState.chosen.map(friend => (
-                            <FriendCard
-                            id={friend.id}
-                            key={friend.id}
-                            name={friend.name}
-                            image={friend.image}
-                            />
-                        ))
-                        }
-                    </div>
-                </Modal>
-                <Modal className="animated lightSpeedIn" id="modal2" header={gameOverTxt} >
-                </Modal>
-            </div>
-        )}
-    </MyContext.Consumer>
-)
+  <MyContext.Consumer>
+    {(context) => (
+      <div className="wrapper">
+        <Title>
+          {context.myGameState.score !== 12
+            ? "Find a Fortnite Match!"
+            : "You won!"}
+        </Title>
+        <div className="cardHolderDiv">
+          {context.myGameState.friends.map((friend) =>
+            friend.userSelected ? (
+              <FriendCard
+                // cardClickHandler={context.cardClickHandler}
+                id={friend.id}
+                key={friend.id}
+                name={friend.name}
+                image={friend.image}
+                matched={friend.matched}
+                allDisabled={context.myGameState.allDisabled}
+              />
+            ) : (
+              <StillCard
+                cardClickHandler={context.cardClickHandler}
+                id={friend.id}
+                key={friend.id}
+                name={friend.name}
+                image={still}
+                hidden={friend.matched}
+                reset={context.myGameState.reset}
+                disableAll={context.myGameState.allDisabled}
+              />
+            )
+          )}
+        </div>
+        <Modal
+          className="animated fadeIn"
+          id="modal1"
+          header={winText}
+          fixedFooter
+        >
+          <br></br>
+          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+            {context.myGameState.chosen.map((friend) => (
+              <FriendCard
+                id={friend.id}
+                key={friend.id}
+                name={friend.name}
+                image={friend.image}
+              />
+            ))}
+          </div>
+        </Modal>
+        <Modal
+          className="animated lightSpeedIn"
+          id="modal2"
+          header={gameOverTxt}
+        ></Modal>
+      </div>
+    )}
+  </MyContext.Consumer>
+);
 export default Wrapper;
