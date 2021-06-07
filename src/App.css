@@ -1,3 +1,15 @@
+@font-face {
+    font-family: Burbank Big Cd Bk;
+    src: url("./BurbankBigCondensed-Black.otf") format("opentype");
+}
+
+* {
+  font-family: Burbank Big Cd Bk !important;
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
 .title {
   width: 100%;
   text-align: center;

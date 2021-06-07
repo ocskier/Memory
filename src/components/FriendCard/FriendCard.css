@@ -23,6 +23,7 @@
 
 span {
   font-size: 1.3rem !important;
+  letter-spacing: 1px;
 }
 
 .disabled {

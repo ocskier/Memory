@@ -5,6 +5,11 @@
     overflow: initial;
 }
 
+.scoreBtn {
+    font-size: 1.6rem;
+    padding: 0.3rem 0 0 0 !important;
+}
+
 @media screen and (max-width: 768px) {
     nav p {
         font-size: 3rem !important;
