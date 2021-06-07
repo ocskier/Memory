@@ -21,7 +21,10 @@
   text-Align: center;
   height: 60%;
   width: 40%;
-  text-shadow: none;
+}
+
+#modal1 h4, #modal1 .modal-footer button {
+  text-shadow: none !important;
 }
 
 #modal1 card {
