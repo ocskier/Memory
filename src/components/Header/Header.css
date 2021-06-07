@@ -8,6 +8,7 @@
 .scoreBtn {
     font-size: 1.6rem;
     padding: 0.3rem 0 0 0 !important;
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {
@@ -31,7 +32,7 @@
         width: 36px !important;
         height: 36px !important;
         line-height: 36px !important;
-        font-size: 11px !important;
+        font-size: 24px !important;
     }
     .resetBtn {
         bottom: 0
