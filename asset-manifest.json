@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Memory/static/css/main.69f68eaf.chunk.css",
+    "main.css": "/Memory/static/css/main.5ee217f0.chunk.css",
     "main.js": "/Memory/static/js/main.e1d7859e.chunk.js",
     "main.js.map": "/Memory/static/js/main.e1d7859e.chunk.js.map",
     "runtime-main.js": "/Memory/static/js/runtime-main.3a02c758.js",
@@ -8,14 +8,14 @@
     "static/js/2.29c1e1a8.chunk.js": "/Memory/static/js/2.29c1e1a8.chunk.js",
     "static/js/2.29c1e1a8.chunk.js.map": "/Memory/static/js/2.29c1e1a8.chunk.js.map",
     "index.html": "/Memory/index.html",
-    "static/css/main.69f68eaf.chunk.css.map": "/Memory/static/css/main.69f68eaf.chunk.css.map",
+    "static/css/main.5ee217f0.chunk.css.map": "/Memory/static/css/main.5ee217f0.chunk.css.map",
     "static/js/2.29c1e1a8.chunk.js.LICENSE.txt": "/Memory/static/js/2.29c1e1a8.chunk.js.LICENSE.txt",
     "static/media/App.css": "/Memory/static/media/BurbankBigCondensed-Black.855d754e.otf"
   },
   "entrypoints": [
     "static/js/runtime-main.3a02c758.js",
     "static/js/2.29c1e1a8.chunk.js",
-    "static/css/main.69f68eaf.chunk.css",
+    "static/css/main.5ee217f0.chunk.css",
     "static/js/main.e1d7859e.chunk.js"
   ]
 }
