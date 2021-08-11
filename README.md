@@ -2,4 +2,5 @@
 
 A React based game of memory and clicks!
 
-![Memory Screenshot](ScreenShot2020-05-20at2.28.56PM.png)
+https://user-images.githubusercontent.com/36890724/128956916-c1fd0b4a-9122-4715-9714-6808b35d2b14.mp4
+
