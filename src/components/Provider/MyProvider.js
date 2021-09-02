@@ -143,20 +143,15 @@ class MyProvider extends Component {
       this.state.guesses === 2 &&
       !(this.state.chosen[0].name === this.state.chosen[1].name)
     ) {
-      setTimeout(
-        () =>
-          this.setState(
-            {
-              wrong: this.state.wrong + 1,
-              guesses: 0,
-              chosen: [],
-              allDisabled: true
-            },
-            () => setTimeout(this.resetImgs, 2200)
-          ),
-        800
-      );
-    }
+      this.setState(
+      {
+        wrong: this.state.wrong + 1,
+        guesses: 0,
+        chosen: [],
+        allDisabled: true
+      },
+      () => setTimeout(this.resetImgs, 2200)
+    )}
   };
 
   removeMatch = () => {
